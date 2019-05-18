@@ -1,23 +1,30 @@
-import java.util.Scanner;
-
 public class OctalToDecimal
 {
     public static void main(String args[])
     {
-        int octnum, decnum=0, exponent=0;
-        Scanner user_input = new Scanner(System.in);
+        int octalnumber =Integer.parseInt(args[0]);
+        int decimalnumber=0, exponent=0;
 
-        System.out.print("Enter Octal Number : ");
-        octnum = user_input.nextInt();
-
-        while(octnum != 0)
+        while(octalnumber != 0)
         {
-            decnum = decnum + (octnum%10) * (int) Math.pow(8, exponent);
+            decimalnumber = decimalnumber + getAnInt(octalnumber) * getPow(exponent);
             exponent++;
-            octnum = octnum/10;
+            octalnumber = getOctnum(octalnumber);
         }
 
-        System.out.print(decnum);
+        System.out.println(decimalnumber);
+    }
+
+    private static int getOctnum(int octalnumber) {
+        return octalnumber/10;
+    }
+
+    private static int getPow(int exponent) {
+        return (int) Math.pow(8, exponent);
+    }
+
+    private static int getAnInt(int octalnumber) {
+        return octalnumber%10;
     }
 }
 
