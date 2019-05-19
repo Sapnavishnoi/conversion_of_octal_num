@@ -1,30 +1,37 @@
-public class OctalToDecimal
-{
-    public static void main(String args[])
-    {
-        int octalnumber =Integer.parseInt(args[0]);
-        int decimalnumber=0, exponent=0;
+import java.sql.SQLOutput;
+import java.util.*;
 
-        while(octalnumber != 0)
-        {
-            decimalnumber = decimalnumber + getAnInt(octalnumber) * getPow(exponent);
-            exponent++;
-            octalnumber = getOctnum(octalnumber);
+public class OctalToDecimal {
+    public static void main(String args[]){
+        String number=args[0];
+        int length =number.length();
+        int decimalnumber=0, exponent=8;
+        //validation
+        for (int digit:elementMultiplication(getDigit(number),getPow(length,exponent))) {
+            decimalnumber+=digit;
         }
-
         System.out.println(decimalnumber);
     }
-
-    private static int getOctnum(int octalnumber) {
-        return octalnumber/10;
+    private static List<Integer> getPow(int length,int exponent) {
+        ArrayList<Integer>powerseries=new ArrayList<Integer>();
+        for (int i = 0; i < length; i++) {
+            int power=((int)Math.pow(exponent,i));
+            powerseries.add(power);
+        }   return powerseries;
     }
 
-    private static int getPow(int exponent) {
-        return (int) Math.pow(8, exponent);
+    private static List<Integer> getDigit(String Number){
+        String [] usernumber=Number.split("");
+        ArrayList<Integer>list=new ArrayList<Integer>();
+        for (int i =usernumber.length; i>0 ; i--) {
+             list.add(Integer.valueOf(usernumber[i-1]));
+        } return list;
     }
-
-    private static int getAnInt(int octalnumber) {
-        return octalnumber%10;
+    private static List<Integer>elementMultiplication(List<Integer>digit,List<Integer>powerseries){
+          ArrayList<Integer>product=new ArrayList<Integer>();
+        for (int i = 0; i <digit.size() ; i++) {
+              product.add(digit.get(i)*powerseries.get(i));
+        }return product;
     }
-}
+ }
 
