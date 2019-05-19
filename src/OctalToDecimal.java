@@ -7,11 +7,20 @@ public class OctalToDecimal {
         int length =number.length();
         int decimalnumber=0, exponent=8;
         //validation
+        if(validation(number)){
+            System.out.println("invalid");
+        }
+        else{
         for (int digit:elementMultiplication(getDigit(number),getPow(length,exponent))) {
             decimalnumber+=digit;
         }
         System.out.println(decimalnumber);
+    }}
+
+    private static boolean validation(String number) {
+        return number.contains("8")||number.contains("9");
     }
+
     private static List<Integer> getPow(int length,int exponent) {
         ArrayList<Integer>powerseries=new ArrayList<Integer>();
         for (int i = 0; i < length; i++) {
