@@ -9,7 +9,7 @@ public class OctalToDecimal {
             System.out.println("invalid");
         }
         else{
-        for (int digit:ElementMultiplication.elementMultiplication(GetDigit.getDigit(number), GetPow.getPower(length,exponent))) {
+        for (int digit:ElementMultiplication.elementMultiplication(GetDigits.getDigits(number), GetPow.getPower(length,exponent))) {
             decimalnumber+=digit;
         }
         System.out.println(decimalnumber);
