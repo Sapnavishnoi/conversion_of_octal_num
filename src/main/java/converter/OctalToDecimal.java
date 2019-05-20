@@ -5,18 +5,16 @@ public class OctalToDecimal {
         String number=args[0];
         int length =number.length();
         int decimalnumber=0, exponent=8;
-        if(validation(number)){
+        if(IsOctalnumberOrNot(number)){
             System.out.println("invalid");
         }
         else{
-        for (int digit:ElementMultiplication.elementMultiplication(GetDigits.getDigits(number), GetPow.getPower(length,exponent))) {
-            decimalnumber+=digit;
-        }
-        System.out.println(decimalnumber);
+
+        System.out.println(DotProduct.dotProduct(GetDigits.getDigits(number), GetPow.getPower(length,exponent)));
     }}
 
 
-    private static boolean validation(String number) {
+    private static boolean IsOctalnumberOrNot(String number) {
         return number.contains("8")||number.contains("9");
     }
 }
